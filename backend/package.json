@@ -1,0 +1,21 @@
+{
+  "name": "sistema_enquete",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon ./src/index.js"
+  },
+  "keywords": [],
+  "author": "James Lopes",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "yup": "^0.32.11",
+    "yup-locale-pt": "^0.0.9"
+  }
+}
