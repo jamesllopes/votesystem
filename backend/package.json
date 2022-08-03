@@ -15,6 +15,7 @@
   "dependencies": {
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
+    "mysql": "^2.18.1",
     "yup": "^0.32.11",
     "yup-locale-pt": "^0.0.9"
   }
