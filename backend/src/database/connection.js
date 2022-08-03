@@ -1,20 +1,11 @@
 const mysql = require('mysql');
 
+
 const connection = mysql.createConnection({
   host: process.env.MYSQL_HOST,
   user: process.env.MYSQL_USER,
   password: process.env.MYSQL_PASSWORD,
-  database: process.env.MYSQL_DATABASE,
-  port: process.env.MYSQL_PORT
+  database: process.env.MYSQL_DATABASE
 });
 
-connection.connect();
-
-const query = (text, param) => {
-    return connection.query(text, param);
-}
-
-console.log(process.env.MYSQL_PORT)
-
-module.exports = { query };
-  
+module.exports = connection;
