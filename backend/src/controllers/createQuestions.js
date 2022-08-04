@@ -1,33 +1,9 @@
 const knex = require('../database/connection')
+const { formatarRespostas, tratamentoData } = require('../utils/algumacoisa')
 
 const createQuestions = async (req, res) => {
-    const { pergunta, data_inicial, data_final, resposta } = req.body;
-    const dataInicial = new Date(data_inicial)
-    const dataFinal = new Date(data_final)
-    let statusPergunta = ''
-
-    if (dataInicial >= new Date() && dataInicial <= dataFinal) {
-        statusPergunta = 'Em Andamento'
-    }
-
-    if (dataInicial < new Date()) {
-        statusPergunta = 'Não Iniciada'
-    }
-
-    if (new Date() > dataFinal) {
-        statusPergunta = 'Finalizada'
-    }
-
-    const formatarRespostas = (resposta, id_pergunta) => {
-        const respostasFormatadas = [];
-        resposta.map((resp) => {
-            respostasFormatadas.push({
-                id_pergunta,
-                resposta: resp,
-            });
-        });
-        return respostasFormatadas;
-    }
+    const { pergunta, resposta } = req.body;
+    const { dataFinal, dataInicial, statusPergunta } = tratamentoData(req)
 
     try {
         const question = await knex('perguntas')
