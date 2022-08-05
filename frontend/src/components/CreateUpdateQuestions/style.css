@@ -8,3 +8,21 @@
   position: fixed;
   background-color: #0f1722;
 }
+
+.close {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  padding: 1rem;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title__modal {
+
+}

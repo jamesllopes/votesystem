@@ -3,31 +3,19 @@ import delet from '../../assets/delete.svg'
 import update from '../../assets/update.svg'
 import useVote from '../../hooks/useVote'
 import { useEffect } from 'react'
-import api from '../../services/api'
 import DeleteQuestion from '../ModalDelete'
 import { format } from 'date-fns'
 
 function ListQuestions() {
     const {
-        setQuestions,
+        getQuestions,
         questions,
-        setResponses,
         setOpenModal,
         setDeleteQuestion,
         deleteQuestion
-
-        // responses
     } = useVote()
 
-    const getQuestions = async () => {
-        try {
-            const response = await api.get('/questions');
-            setQuestions(response.data[0].questions)
-            setResponses(response.data[0].resp)
-        } catch (error) {
-            throw error
-        }
-    }
+
 
     const handleDelete = (id) => {
         setDeleteQuestion(id)
