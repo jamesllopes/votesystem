@@ -1,18 +1,22 @@
+
 :root {
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-  font-size: 16px;
+  font-size: 10px;
   line-height: 24px;
   font-weight: 400;
+  background-color: var(--background);
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #0f1722;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
+  --button-color: #17C3B2;
+  --background: #0f1722;
 }
 
 * {
@@ -21,19 +25,16 @@
   box-sizing: border-box;
 }
 
-html {
-  font-size: 10px;
-}
 
-button {
+.btn {
   padding: 0.8em 1.8em;
-  border: 2px solid #17C3B2;
+  border: 2px solid var(--button-color);
   position: relative;
   overflow: hidden;
   background-color: transparent;
   text-align: center;
   text-transform: uppercase;
-  font-size: 16px;
+  font-size: 1.6rem;
   transition: .3s;
   z-index: 1;
   font-family: inherit;
@@ -41,7 +42,7 @@ button {
   cursor: pointer;
  }
    
- button::before {
+ .btn::before {
   content: '';
   width: 0;
   height: 300%;
@@ -55,11 +56,11 @@ button {
   z-index: -1;
  }
  
- button:hover::before {
+ .btn:hover::before {
   width: 105%;
  }
  
- button:hover {
+ .btn:hover {
   color: #111;
  }
 

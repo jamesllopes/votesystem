@@ -16,7 +16,7 @@ function Main() {
       <Header />
       <section className='btn_create'>
         <button className='btn'
-          onClick={() => setOpenModal(true)}> Crie sua enquete
+          onClick={() => setOpenModal('Criar')}> Crie sua enquete
         </button>
       </section>
       <main className='listQuestions'>
