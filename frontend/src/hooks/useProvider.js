@@ -10,8 +10,7 @@ function useProvider() {
     const getQuestions = async () => {
         try {
             const response = await api.get('/questions');
-            setQuestions(response.data[0].questions)
-            setResponses(response.data[0].resp)
+            setQuestions(response.data)
         } catch (error) {
             throw error
         }

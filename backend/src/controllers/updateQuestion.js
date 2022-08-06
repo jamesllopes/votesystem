@@ -17,11 +17,13 @@ const updateQuestion = async (req, res) => {
             .update({ pergunta, data_inicial: dataInicial, data_final: dataFinal, status_pergunta: statusPergunta })
             .where('id', Number(id));
 
-        for (resp of resposta) {
-            await knex('respostas')
-                .update({ resposta: resp })
-                .where('id_pergunta', Number(id));
-        }
+        const [respostasFormatadas] = formatarRespostas(resposta, id);
+        console.log(respostasFormatadas)
+
+        await knex('respostas')
+            .update({ resposta: resposta })
+            .where('id_pergunta', Number(id));
+
 
         if (!questionUpdate) {
             return res.status(400).json("A enquete não foi atualizada");

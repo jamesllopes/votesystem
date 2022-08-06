@@ -12,9 +12,12 @@ function ListQuestions() {
         questions,
         setOpenModal,
         setDeleteQuestion,
-        deleteQuestion
+        deleteQuestion,
+        responses
     } = useVote()
 
+    console.log(questions)
+    console.log(responses)
 
 
     const handleDelete = (id) => {
