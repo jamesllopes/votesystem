@@ -10,6 +10,7 @@ function Main() {
     setOpenModal
   } = useVote()
 
+
   return (
     <div className="container">
       {openModal && <CreateUpdate />}

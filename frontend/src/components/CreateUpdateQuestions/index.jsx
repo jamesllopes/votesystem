@@ -45,8 +45,8 @@ function CreateUpdate() {
         try {
             await api.post('/questions', {
                 pergunta: form.pergunta,
-                data_inicial: new Date(form.data_inicial.split("/").reverse().join("/")),
-                data_final: new Date(form.data_final.split("/").reverse().join("/")),
+                data_inicial: form.data_inicial.split("/").reverse().join("/"),
+                data_final: form.data_final.split("/").reverse().join("/"),
                 resposta: resp
             });
             setError('')

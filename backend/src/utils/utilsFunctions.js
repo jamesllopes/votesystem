@@ -5,11 +5,11 @@ const tratamentoData = (req) => {
     const dataFinal = new Date(data_final)
     let statusPergunta = ''
 
-    if (dataInicial >= new Date() && dataInicial <= dataFinal) {
+    if (dataInicial <= new Date() && dataInicial <= dataFinal) {
         statusPergunta = 'Em Andamento'
     }
 
-    if (dataInicial < new Date()) {
+    if (dataInicial > new Date()) {
         statusPergunta = 'Não Iniciada'
     }
 

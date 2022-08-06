@@ -1,5 +1,5 @@
 const knex = require('../database/connection')
-const { formatarRespostas, tratamentoData } = require('../utils/algumacoisa')
+const { formatarRespostas, tratamentoData } = require('../utils/utilsFunctions')
 
 const updateQuestion = async (req, res) => {
     const { id } = req.params;

@@ -16,6 +16,6 @@ CREATE TABLE respostas (
 	id INT PRIMARY KEY AUTO_INCREMENT,
   id_pergunta INT NOT NULL,
   resposta VARCHAR(255) NOT NULL,
-  qtd_votos INT,
+  qtd_votos INT DEFAULT 0,
   FOREIGN KEY (id_pergunta) REFERENCES perguntas(id)
 );

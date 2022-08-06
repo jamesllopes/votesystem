@@ -15,12 +15,13 @@ function Vote({ getQuestionForVote }) {
 
     const handleChangeValue = (e, qtd_votos) => {
         setOptions({ id: e.target.id, resposta: e.target.value, votos: qtd_votos })
+        console.log(options)
     }
 
     const handleSubmitVote = async () => {
         const id = currentQuestion.question.id
 
-        if (!options.resposta || !options.id || !options.votos) {
+        if (!options.resposta || !options.id) {
             setError('É necessário escolher uma resposta.')
             return
         }
@@ -41,8 +42,6 @@ function Vote({ getQuestionForVote }) {
             setError(error.message)
         }
     }
-
-
 
     return (
         <div className="modal__vote">
