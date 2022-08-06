@@ -27,7 +27,7 @@ const listOneQuestion = async (req, res) => {
             return res.status(404).json('Enquete não encontrada');
         }
 
-        const result = [question, resp]
+        const result = [{ question: question, resp: resp }]
 
         return res.status(200).json(result);
 

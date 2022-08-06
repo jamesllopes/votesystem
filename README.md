@@ -1,3 +1,12 @@
+// FALTA 
+- CORRIGIR O UPDATE NO BACK
+- CRIAR O UPDATE NO FRONT
+- CORRIGIR FALHA DAS DATAS NO BACK
+- CONFIGURAR OS CARDS DE ACORDO COM AS DATAS.
+- LAYOUT
+- REFATORAR CODIGO (INGLES/PORTUGUES) 
+
+
 BACK
 // Criar CRUD Gerenciamento de Enquetes
 // Cadastro de respostas de enquete com no minimo 3 opcoes

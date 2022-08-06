@@ -5,6 +5,8 @@ import useVote from '../../hooks/useVote'
 import { useEffect } from 'react'
 import DeleteQuestion from '../ModalDelete'
 import { format } from 'date-fns'
+import Vote from '../Vote'
+import api from '../../services/api'
 
 function ListQuestions() {
     const {
@@ -13,15 +15,28 @@ function ListQuestions() {
         setOpenModal,
         setDeleteQuestion,
         deleteQuestion,
-        responses
+        setOpenVote,
+        openVote,
+        setCurrentQuestion
     } = useVote()
-
-    console.log(questions)
-    console.log(responses)
-
 
     const handleDelete = (id) => {
         setDeleteQuestion(id)
+    }
+
+    const handleVote = async (id) => {
+        await getQuestionForVote(id)
+        setOpenVote(true)
+    }
+
+    const getQuestionForVote = async (id) => {
+        try {
+            const response = await api.get(`/question/${id}`);
+            setCurrentQuestion(...response.data)
+
+        } catch (error) {
+            throw error
+        }
     }
 
     useEffect(() => {
@@ -30,6 +45,8 @@ function ListQuestions() {
 
     return (
         <div className="questions__list">
+            {openVote && <Vote
+                getQuestionForVote={getQuestionForVote} />}
             {deleteQuestion && <DeleteQuestion />}
             {questions.map(item => (
                 <div className="card"
@@ -42,7 +59,10 @@ function ListQuestions() {
                             <span>{item.status_pergunta === "Finalizada" && `Finalizada em: ${format(new Date(item.data_final), `dd/MM/yyyy`)}`}</span>
                         </div>
                         <h2 className='title__question'>{item.pergunta}</h2>
-                        <button className="btn"> Votar
+                        <button
+                            className="btn"
+                            onClick={() => handleVote(item.id)}
+                            id={item.id}> Votar
                         </button>
                         <div className='delete__update'>
                             <img

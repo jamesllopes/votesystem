@@ -5,9 +5,8 @@ import { useState } from 'react'
 import api from '../../services/api'
 
 function CreateUpdate() {
-    const { getQuestions, setOpenModal, openModal, questions, setQuestions } = useVote()
+    const { getQuestions, setOpenModal, openModal, error, setError } = useVote()
     const [form, setForm] = useState({ pergunta: '', data_inicial: '', data_final: '', resposta: '' })
-    const [error, setError] = useState('')
     const [resp, setResp] = useState([])
 
     const handleChangeInput = (e) => {

@@ -3,9 +3,11 @@ import api from '../services/api'
 
 function useProvider() {
     const [questions, setQuestions] = useState([])
-    const [responses, setResponses] = useState([])
     const [openModal, setOpenModal] = useState('')
     const [deleteQuestion, setDeleteQuestion] = useState('')
+    const [openVote, setOpenVote] = useState(false)
+    const [currentQuestion, setCurrentQuestion] = useState({})
+    const [error, setError] = useState('')
 
     const getQuestions = async () => {
         try {
@@ -20,12 +22,17 @@ function useProvider() {
         getQuestions,
         questions,
         setQuestions,
-        responses,
-        setResponses,
         openModal,
         setOpenModal,
         deleteQuestion,
-        setDeleteQuestion
+        setDeleteQuestion,
+        openVote,
+        setOpenVote,
+        currentQuestion,
+        setCurrentQuestion,
+        error,
+        setError
+
     }
 }
 export default useProvider;
