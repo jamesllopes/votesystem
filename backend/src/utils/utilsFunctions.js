@@ -35,9 +35,6 @@ const formatarRespostas = (resposta, id_pergunta) => {
     return respostasFormatadas;
 }
 
-
-
-
 module.exports = {
     tratamentoData,
     formatarRespostas

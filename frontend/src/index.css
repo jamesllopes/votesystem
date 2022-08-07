@@ -17,6 +17,8 @@
 
   --button-color: #17C3B2;
   --background: #0f1722;
+  --gray: #686565;
+  --red: #bd0000;
 }
 
 * {
@@ -67,5 +69,17 @@
 a {
   color: #1972A8;
   text-decoration: none;
+}
+
+.success {
+  font-size: 2.2rem;
+  color: var(--button-color);
+  text-align: center;
+}
+
+.error {
+  font-size: 2.2rem;
+  color: var(--red);
+  text-align: center;
 }
 

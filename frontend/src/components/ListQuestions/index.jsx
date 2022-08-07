@@ -4,7 +4,6 @@ import update from '../../assets/update.svg'
 import useVote from '../../hooks/useVote'
 import { useEffect } from 'react'
 import DeleteQuestion from '../ModalDelete'
-import { format } from 'date-fns'
 import Vote from '../Vote'
 import api from '../../services/api'
 import dateFormat from '../../utils/date'
@@ -18,13 +17,17 @@ function ListQuestions() {
     deleteQuestion,
     setOpenVote,
     openVote,
-    setCurrentQuestion
+    setCurrentQuestion,
+    setUpdateQuestions
   } = useVote()
   const handleDelete = (id) => {
     setDeleteQuestion(id)
   }
 
-  const handleVote = async (id) => {
+  const handleVote = async (id, status) => {
+    if (status !== "Em Andamento") {
+      return
+    }
     await getQuestionForVote(id)
     setOpenVote(true)
   }
@@ -39,6 +42,16 @@ function ListQuestions() {
     }
   }
 
+  const handleUpdateQuestions = async (item) => {
+    try {
+      const response = await api.get(`/question/${item.id}`);
+      setUpdateQuestions([...response.data], item)
+    } catch (error) {
+      throw error
+    }
+    setOpenModal('Atualizar')
+  }
+
   useEffect(() => {
     getQuestions()
   }, [])
@@ -48,6 +61,7 @@ function ListQuestions() {
       {openVote && <Vote
         getQuestionForVote={getQuestionForVote} />}
       {deleteQuestion && <DeleteQuestion />}
+
       {questions.map(item => (
         <div className="card"
           key={item.id}>
@@ -60,8 +74,8 @@ function ListQuestions() {
             </div>
             <h2 className='title__question'>{item.pergunta}</h2>
             <button
-              className={item.status_pergunta !== 'Em Andamento' && 'btn '}
-              onClick={() => handleVote(item.id)}
+              className={item.status_pergunta !== 'Em Andamento' ? 'oculto ' : 'btn'}
+              onClick={() => handleVote(item.id, item.status_pergunta)}
               id={item.id}> Votar
             </button>
             <div className='delete__update'>
@@ -75,7 +89,7 @@ function ListQuestions() {
                 className='update'
                 src={update}
                 alt='Atualizar'
-                onClick={() => setOpenModal('atualizar')} />
+                onClick={() => handleUpdateQuestions(item)} />
             </div>
           </div>
         </div>

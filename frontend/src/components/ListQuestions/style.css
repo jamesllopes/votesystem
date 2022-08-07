@@ -50,3 +50,19 @@
    .delete, .update {
     cursor: pointer;
    }
+
+   .oculto {
+    padding: 0.8em 1.8em;
+    border: 2px solid var(--gray);
+    position: relative;
+    overflow: hidden;
+    background-color: transparent;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1.6rem;
+    transition: .3s;
+    z-index: 1;
+    font-family: inherit;
+    color: var(--gray);
+    cursor: default;
+   }

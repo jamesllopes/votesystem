@@ -1,10 +1,12 @@
 const knex = require('../database/connection')
-const { formatarRespostas, tratamentoData } = require('../utils/utilsFunctions')
+const { tratamentoData } = require('../utils/utilsFunctions')
 
 const updateQuestion = async (req, res) => {
     const { id } = req.params;
-    const { pergunta, resposta } = req.body;
+    const { pergunta, respostas } = req.body;
     const { dataFinal, dataInicial, statusPergunta } = tratamentoData(req)
+
+
 
     try {
         const question = await knex('perguntas').where('id', Number(id)).first();
@@ -17,13 +19,12 @@ const updateQuestion = async (req, res) => {
             .update({ pergunta, data_inicial: dataInicial, data_final: dataFinal, status_pergunta: statusPergunta })
             .where('id', Number(id));
 
-        const [respostasFormatadas] = formatarRespostas(resposta, id);
-        console.log(respostasFormatadas)
-
-        await knex('respostas')
-            .update({ resposta: resposta })
-            .where('id_pergunta', Number(id));
-
+        for (resp of respostas) {
+            console.log(resp.resposta)
+            await knex('respostas')
+                .update({ resposta: resp.resposta })
+                .where('id', resp.id);
+        }
 
         if (!questionUpdate) {
             return res.status(400).json("A enquete não foi atualizada");

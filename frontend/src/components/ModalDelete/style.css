@@ -7,7 +7,6 @@
     transform: translate(-50%, -50%);
     position: fixed;
     background-color: #000000da;
-
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -45,7 +44,6 @@
     color: #be0505;
     cursor: pointer;
 }
-
    
 .btn_cancelar::before {
     content: '';
@@ -65,7 +63,18 @@
    width: 105%;
 }
    
-   .btn_cancelar:hover {
-    color: #111;
-   }
+.btn_cancelar:hover {
+   color: #111;
+}
+
+@media screen and (min-width: 1366px) {
+    .content__modal {
+        width: 30%;
+        padding: 5rem;
+        gap: 2rem;
+    }
+}
+  
+
+
   

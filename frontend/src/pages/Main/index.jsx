@@ -1,7 +1,8 @@
 import './style.css'
 import Header from '../../components/Header'
 import ListQuestions from '../../components/ListQuestions'
-import CreateUpdate from "../../components/CreateUpdateQuestions"
+import CreateQuestion from "../../components/CreateQuestion"
+import UpdateQuestion from '../../components/UpdateQuestion'
 import useVote from '../../hooks/useVote'
 
 function Main() {
@@ -13,7 +14,8 @@ function Main() {
 
   return (
     <div className="container">
-      {openModal && <CreateUpdate />}
+      {openModal === 'Criar' && <CreateQuestion />}
+      {openModal === 'Atualizar' && <UpdateQuestion />}
       <Header />
       <section className='btn_create'>
         <button className='btn'
