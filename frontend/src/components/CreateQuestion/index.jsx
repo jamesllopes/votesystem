@@ -51,6 +51,7 @@ function CreateQuestion() {
             setSuccess(response.data)
             setTimeout(() => {
                 setOpenModal('')
+                setSuccess('')
             }, [1500])
             getQuestions()
         } catch (error) {
