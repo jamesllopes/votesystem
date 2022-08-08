@@ -30,8 +30,9 @@ O projeto consistiu na elaboração de um sistema de Enquetes, utilizando o Node
 git clone https://github.com/jamesllopes/votesystem.git
 
 // Para subir o Back-End É necessário ter o Docker e o Docker Compose instalados
-
+// Executar o SQL manualmente.
 //Back End
+
 npm install // para instalar todas as dependencias
 docker-compose up // para subir o back com o Docker
 
