@@ -6,7 +6,6 @@ function DeleteQuestion() {
     const { setDeleteQuestion, deleteQuestion, questions, setQuestions } = useVote()
     const handleDeleteQuestion = async () => {
         const currentTransaction = [...questions]
-
         try {
             await api.delete(`/question/${deleteQuestion}`);
             const findItem = currentTransaction.findIndex(item => (
@@ -19,7 +18,6 @@ function DeleteQuestion() {
             throw error
         }
     }
-
     return (
         <div className='container__modal-delete'>
             <div className='content__modal'>
@@ -30,7 +28,6 @@ function DeleteQuestion() {
                 <button
                     className='btn_cancelar'
                     onClick={() => setDeleteQuestion('')}>Cancelar</button>
-
             </div>
         </div>
     )

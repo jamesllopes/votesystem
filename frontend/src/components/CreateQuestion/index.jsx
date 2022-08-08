@@ -4,12 +4,13 @@ import useVote from '../../hooks/useVote'
 import { useState } from 'react'
 import api from '../../services/api'
 
-
 function CreateQuestion() {
     const { getQuestions,
         setOpenModal,
         error,
-        setError
+        setError,
+        success,
+        setSuccess
     } = useVote()
     const [form, setForm] = useState({ pergunta: '', data_inicial: '', data_final: '', resposta: '' })
     const [resp, setResp] = useState([])
@@ -27,7 +28,6 @@ function CreateQuestion() {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-
         if (!form.pergunta || !form.data_inicial || !form.data_final) {
             setError('Todos os campos são obrigatórios.')
             return
@@ -41,26 +41,28 @@ function CreateQuestion() {
 
     const createQuestion = async () => {
         try {
-            await api.post('/questions', {
+            const response = await api.post('/questions', {
                 pergunta: form.pergunta,
                 data_inicial: form.data_inicial.split("/").reverse().join("/"),
                 data_final: form.data_final.split("/").reverse().join("/"),
                 resposta: resp
             });
             setError('')
-            setOpenModal('')
+            setSuccess(response.data)
+            setTimeout(() => {
+                setOpenModal('')
+            }, [1500])
             getQuestions()
-
         } catch (error) {
             setError(error.message)
         }
     }
 
     return (
-        <div className='container__modal'>
+        <div className='modal modal__create__update'>
             <div className='close__modal'>
                 <img
-                    className='close-img'
+                    className='close__logo'
                     src={close}
                     alt='Fechar'
                     onClick={() => setOpenModal('')} />
@@ -106,7 +108,7 @@ function CreateQuestion() {
                             onClick={() => handleNextResp()}>Salvar</button>
                     </div>
 
-                    <div className='responses__submit'>
+                    <div className='itens__response'>
                         {resp.map(item => (
                             <p className='submit__responses'>
                                 {item}
@@ -117,6 +119,7 @@ function CreateQuestion() {
                         type='submit'>Enviar</button>
                 </form>
                 {error && <span className='error'>{error}</span>}
+                {success && <span className='success'>{success}</span>}
             </div>
         </div>
     )

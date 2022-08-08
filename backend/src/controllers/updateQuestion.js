@@ -20,7 +20,6 @@ const updateQuestion = async (req, res) => {
             .where('id', Number(id));
 
         for (resp of respostas) {
-            console.log(resp.resposta)
             await knex('respostas')
                 .update({ resposta: resp.resposta })
                 .where('id', resp.id);

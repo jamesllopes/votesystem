@@ -36,7 +36,6 @@ function ListQuestions() {
     try {
       const response = await api.get(`/question/${id}`);
       setCurrentQuestion(...response.data)
-
     } catch (error) {
       throw error
     }
@@ -61,40 +60,42 @@ function ListQuestions() {
       {openVote && <Vote
         getQuestionForVote={getQuestionForVote} />}
       {deleteQuestion && <DeleteQuestion />}
-
-      {questions.map(item => (
-        <div className="card"
-          key={item.id}>
-          <div className='card__content'>
-            <div className='status'>
-              <span className='status__text'>{item.status_pergunta}</span>
-              <span>{item.status_pergunta === "Não Iniciada" && `Inicia em: ${dateFormat(item.data_inicial)}`}</span>
-              <span>{item.status_pergunta === "Em Andamento" && `Finaliza em: ${dateFormat(item.data_final)}`}</span>
-              <span>{item.status_pergunta === "Finalizada" && `Finalizada em: ${dateFormat(item.data_final)}`}</span>
-            </div>
-            <h2 className='title__question'>{item.pergunta}</h2>
-            <button
-              className={item.status_pergunta !== 'Em Andamento' ? 'oculto ' : 'btn'}
-              onClick={() => handleVote(item.id, item.status_pergunta)}
-              id={item.id}> Votar
-            </button>
-            <div className='delete__update'>
-              <img
-                className='delete'
-                src={delet}
-                alt='Excluir'
-                id={item.id}
-                onClick={() => handleDelete(item.id)} />
-              <img
-                className='update'
-                src={update}
-                alt='Atualizar'
-                onClick={() => handleUpdateQuestions(item)} />
+      <h1 className='title__list'>Lista de Enquetes</h1>
+      <div className='content__list'>
+        {questions.map(item => (
+          <div className="card"
+            key={item.id}>
+            <div className='card__content'>
+              <div className='status'>
+                <span className='status__text'>{item.status_pergunta}</span>
+                <span>{item.status_pergunta === "Não Iniciada" && `Inicia em: ${dateFormat(item.data_inicial)}`}</span>
+                <span>{item.status_pergunta === "Em Andamento" && `Finaliza em: ${dateFormat(item.data_final)}`}</span>
+                <span>{item.status_pergunta === "Finalizada" && `Finalizada em: ${dateFormat(item.data_final)}`}</span>
+              </div>
+              <h2 className='title__question-list'>{item.pergunta}</h2>
+              <button
+                className={item.status_pergunta !== 'Em Andamento' ? 'oculto ' : 'btn'}
+                onClick={() => handleVote(item.id, item.status_pergunta)}
+                id={item.id}> Votar
+              </button>
+              <div className='delete__update'>
+                <img
+                  className='delete'
+                  src={delet}
+                  alt='Excluir'
+                  id={item.id}
+                  onClick={() => handleDelete(item.id)} />
+                <img
+                  className='update'
+                  src={update}
+                  alt='Atualizar'
+                  onClick={() => handleUpdateQuestions(item)} />
+              </div>
             </div>
           </div>
-        </div>
-      ))
-      }
+        ))
+        }
+      </div>
     </div >
   )
 }

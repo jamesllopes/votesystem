@@ -9,6 +9,7 @@ function useProvider() {
     const [currentQuestion, setCurrentQuestion] = useState({})
     const [error, setError] = useState('')
     const [updateQuestions, setUpdateQuestions] = useState([])
+    const [success, setSuccess] = useState('')
 
     const getQuestions = async () => {
         try {
@@ -34,7 +35,9 @@ function useProvider() {
         error,
         setError,
         updateQuestions,
-        setUpdateQuestions
+        setUpdateQuestions,
+        success,
+        setSuccess
     }
 }
 export default useProvider;

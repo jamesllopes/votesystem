@@ -1,10 +1,24 @@
 .questions__list {
     padding: 2rem 0;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.title__list {
+    padding: 1.6rem 0 0.5rem 0;
+    border-bottom: 1px solid var(--gray);
+    font-size: 2.4rem ;
+}
+
+.content__list {
+    display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: flex-start;
-    gap: 1rem;
+    align-items: center;
+    gap: 1rem;    
 }
 
 .card {
@@ -35,7 +49,7 @@
     font-size: 1.2rem;
    }
 
-   .title__question {
+   .title__question-list {
     font-size: 2.2rem;
     text-align: center;
    }
@@ -66,3 +80,27 @@
     color: var(--gray);
     cursor: default;
    }
+
+@media screen and (min-width: 1366px) {
+   
+    .card {
+      width: 260px;
+    }
+    .content__list {
+        gap: 2rem;    
+    }
+    .card__content {
+        padding: 2rem;
+        gap: 2rem;
+       }
+  }
+  
+  @media screen and (min-width: 1920px) {
+    .card {
+        width: 310px;
+      }
+      .content__list {
+          gap: 3rem;    
+      }
+    
+  }
