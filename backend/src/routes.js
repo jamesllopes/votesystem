@@ -9,10 +9,10 @@ const { countVote } = require('./controllers/countVotes')
 const { validationVotes } = require('./middlewares/validationVotes')
 
 routes.get('/questions', listQuestions)
-routes.get('/question/:id', listOneQuestion)
+routes.get('/questions/:id', listOneQuestion)
 routes.post('/questions', validationQuestions, createQuestions)
 routes.put('/questions/:id', updateQuestion)
 routes.put('/vote/:id', validationVotes, countVote)
-routes.delete('/question/:id', deleteQuestion)
+routes.delete('/questions/:id', deleteQuestion)
 
 module.exports = routes;

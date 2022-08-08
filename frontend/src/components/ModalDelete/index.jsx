@@ -7,7 +7,7 @@ function DeleteQuestion() {
     const handleDeleteQuestion = async () => {
         const currentTransaction = [...questions]
         try {
-            await api.delete(`/question/${deleteQuestion}`);
+            await api.delete(`/questions/${deleteQuestion}`);
             const findItem = currentTransaction.findIndex(item => (
                 item.id === Number(deleteQuestion)
             ))

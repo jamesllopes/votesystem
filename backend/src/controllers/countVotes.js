@@ -4,7 +4,7 @@ const countVote = async (req, res) => {
     const { id, qtd_votos } = req.body
 
     try {
-        const votes = await knex('respostas')
+        await knex('respostas')
             .update({ qtd_votos })
             .where('id', Number(id));
 

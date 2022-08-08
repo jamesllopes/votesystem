@@ -34,7 +34,7 @@ function ListQuestions() {
 
   const getQuestionForVote = async (id) => {
     try {
-      const response = await api.get(`/question/${id}`);
+      const response = await api.get(`/questions/${id}`);
       setCurrentQuestion(...response.data)
     } catch (error) {
       throw error
@@ -43,7 +43,7 @@ function ListQuestions() {
 
   const handleUpdateQuestions = async (item) => {
     try {
-      const response = await api.get(`/question/${item.id}`);
+      const response = await api.get(`/questions/${item.id}`);
       setUpdateQuestions([...response.data], item)
     } catch (error) {
       throw error

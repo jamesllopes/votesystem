@@ -1,4 +1,7 @@
 FROM node:alpine
+FROM mysql:5.7
+
+COPY ./db/ /docker-entrypoint-initdb.d/
 
 WORKDIR /usr/app
 COPY package*.json ./
